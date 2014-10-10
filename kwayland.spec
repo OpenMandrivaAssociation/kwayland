@@ -17,6 +17,7 @@ BuildRequires: qmake5
 BuildRequires: extra-cmake-modules5
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(wayland-client)
+BuildRequires: pkgconfig(wayland-egl)
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt5)
