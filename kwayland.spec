@@ -2,12 +2,13 @@
 %define libname %mklibname KF5WaylandClient %{major}
 %define devname %mklibname KF5WaylandClient -d
 %define debug_package %{nil}
-%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%define plasmaver %(echo %{version} |cut -d. -f1-3)
+%define stable %([ "`echo %{plasmaver} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: kwayland
-Version: 5.0.95
+Version: 5.1.0.1
 Release: 1
-Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/plasma/%{version}/%{name}-%{version}.tar.xz
+Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Library for working with the Wayland display server
 URL: http://kde.org/
 License: GPL
@@ -45,7 +46,7 @@ Requires: %{libname} = %{EVRD}
 Development files for the KDE Plasma 5 Wayland library
 
 %prep
-%setup -q
+%setup -qn %{name}-%{plasmaver}
 %cmake -G Ninja
 
 %build
@@ -56,7 +57,7 @@ DESTDIR="%{buildroot}" ninja -C build install %{?_smp_mflags}
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
-%{_libdir}/*.so.%{version}
+%{_libdir}/*.so.%{plasmaver}
 
 %files -n %{devname}
 %{_includedir}/*
