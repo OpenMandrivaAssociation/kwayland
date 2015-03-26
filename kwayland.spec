@@ -6,7 +6,7 @@
 %define stable %([ "`echo %{plasmaver} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: kwayland
-Version: 5.2.1
+Version: 5.2.2
 Release: 1
 Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Library for working with the Wayland display server
@@ -17,25 +17,26 @@ BuildRequires: cmake
 BuildRequires: qmake5
 BuildRequires: extra-cmake-modules5
 BuildRequires: pkgconfig(Qt5Core)
+BuildRequires: pkgconfig(Qt5Gui)
+BuildRequires: pkgconfig(Qt5Test)
 BuildRequires: pkgconfig(wayland-client)
-BuildRequires: pkgconfig(wayland-egl)
+BuildRequires: pkgconfig(wayland-scanner)
+BuildRequires: pkgconfig(wayland-server)
+BuildRequires: wayland-tools
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(Qt5)
-BuildRequires: cmake(Wayland)
-BuildRequires: cmake(Qt5)
 BuildRequires: ninja
 Requires: %{libname} = %{EVRD}
 
 %description
-KDE Library for working with the Wayland display server
+KDE Library for working with the Wayland display server.
 
 %package -n %{libname}
 Summary: KDE Library for working with the Wayland display server
 Group: System/Libraries
 
 %description -n %{libname}
-KDE Library for working with the Wayland display server
+KDE Library for working with the Wayland display server.
 
 %package -n %{devname}
 Summary: Development files for the KDE Plasma 5 Wayland library
@@ -43,7 +44,7 @@ Group: Development/KDE and Qt
 Requires: %{libname} = %{EVRD}
 
 %description -n %{devname}
-Development files for the KDE Plasma 5 Wayland library
+Development files for the KDE Plasma 5 Wayland library.
 
 %prep
 %setup -qn %{name}-%{plasmaver}
