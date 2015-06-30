@@ -8,14 +8,11 @@
 Name: kwayland
 Version: 5.3.2
 Release: 1
-Source0: http://ftp5.gwdg.de/pub/linux/kde/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
+Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: KDE Library for working with the Wayland display server
 URL: http://kde.org/
 License: GPL
 Group: System/Libraries
-BuildRequires: cmake
-BuildRequires: qmake5
-BuildRequires: extra-cmake-modules5
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Gui)
 BuildRequires: pkgconfig(Qt5Test)
@@ -25,7 +22,6 @@ BuildRequires: pkgconfig(wayland-server)
 BuildRequires: wayland-tools
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
-BuildRequires: ninja
 Requires: %{libname} = %{EVRD}
 
 %description
@@ -48,14 +44,13 @@ Development files for the KDE Plasma 5 Wayland library.
 
 %prep
 %setup -qn %{name}-%{plasmaver}
-%cmake -G Ninja \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+%cmake_kde5
 
 %build
-ninja -C build
+%ninja -C build
 
 %install
-DESTDIR="%{buildroot}" ninja -C build install %{?_smp_mflags}
+%ninja_install -C build
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
