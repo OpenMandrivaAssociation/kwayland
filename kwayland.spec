@@ -5,23 +5,24 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "`echo %{plasmaver} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
-Name: kwayland
-Version: 5.3.2
-Release: 1
-Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
-Summary: KDE Library for working with the Wayland display server
-URL: http://kde.org/
-License: GPL
-Group: System/Libraries
+Name: 		kwayland
+Version: 	5.3.2
+Release: 	2
+Source0: 	http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
+Summary: 	KDE Library for working with the Wayland display server
+Url: 		http://kde.org/
+License: 	GPL
+Group: 		System/Libraries
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Gui)
 BuildRequires: pkgconfig(Qt5Test)
-BuildRequires: pkgconfig(wayland-client)
-BuildRequires: pkgconfig(wayland-scanner)
-BuildRequires: pkgconfig(wayland-server)
-BuildRequires: wayland-tools
+BuildRequires: pkgconfig(wayland-client) >= 1.8.1
+BuildRequires: pkgconfig(wayland-scanner) >= 1.8.1
+BuildRequires: pkgconfig(wayland-server) >= 1.8.1
+BuildRequires: wayland-tools >= 1.8.1
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
+
 Requires: %{libname} = %{EVRD}
 
 %description
