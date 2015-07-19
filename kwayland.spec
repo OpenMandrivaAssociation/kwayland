@@ -7,7 +7,7 @@
 
 Name: 		kwayland
 Version: 	5.3.2
-Release: 	2
+Release: 	3
 Source0: 	http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: 	KDE Library for working with the Wayland display server
 Url: 		http://kde.org/
