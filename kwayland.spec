@@ -31,6 +31,7 @@ KDE Library for working with the Wayland display server.
 %package -n %{libname}
 Summary: KDE Library for working with the Wayland display server
 Group: System/Libraries
+Requires: %{name} = %{EVRD}
 
 %description -n %{libname}
 KDE Library for working with the Wayland display server.
@@ -53,6 +54,9 @@ Development files for the KDE Plasma 5 Wayland library.
 %install
 %ninja_install -C build
 
+%files
+%{_sysconfdir}/xdg/org_kde_kwayland.categories
+
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
 %{_libdir}/*.so.%{plasmaver}
@@ -61,3 +65,4 @@ Development files for the KDE Plasma 5 Wayland library.
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/cmake/KF5*
+%{_libdir}/qt5/mkspecs/modules/*.pri
