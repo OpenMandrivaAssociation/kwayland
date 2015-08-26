@@ -7,7 +7,7 @@
 
 Name: 		kwayland
 Version: 	5.4.0
-Release: 	1
+Release: 	2
 Source0: 	http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: 	KDE Library for working with the Wayland display server
 Url: 		http://kde.org/
@@ -22,7 +22,9 @@ BuildRequires: pkgconfig(wayland-server) >= 1.8.1
 BuildRequires: wayland-tools >= 1.8.1
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
-
+Requires: qt5-qtwayland
+Requires: qt5-output-driver-eglfs
+Requires: kwayland-integration
 Requires: %{libname} = %{EVRD}
 
 %description
