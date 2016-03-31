@@ -7,7 +7,7 @@
 
 Name: 		kwayland
 Version: 	5.6.1
-Release: 	1
+Release: 	1.1
 Source0: 	http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: 	KDE Library for working with the Wayland display server
 Url: 		http://kde.org/
@@ -33,7 +33,6 @@ KDE Library for working with the Wayland display server.
 %package -n %{libname}
 Summary: KDE Library for working with the Wayland display server
 Group: System/Libraries
-Requires: %{name} = %{EVRD}
 
 %description -n %{libname}
 KDE Library for working with the Wayland display server.
