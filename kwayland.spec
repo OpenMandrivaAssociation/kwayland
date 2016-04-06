@@ -6,7 +6,7 @@
 %define stable %([ "`echo %{plasmaver} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: 		kwayland
-Version: 	5.6.1
+Version: 	5.6.2
 Release: 	1.1
 Source0: 	http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: 	KDE Library for working with the Wayland display server
