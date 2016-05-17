@@ -2,20 +2,22 @@
 %define libname %mklibname KF5WaylandClient %{major}
 %define devname %mklibname KF5WaylandClient -d
 %define debug_package %{nil}
-%define plasmaver %(echo %{version} |cut -d. -f1-3)
-%define stable %([ "`echo %{plasmaver} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
-Name: 		kwayland
-Version: 	5.6.4
-Release: 	1.1
-Source0: 	http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
-Summary: 	KDE Library for working with the Wayland display server
-Url: 		http://kde.org/
-License: 	GPL
-Group: 		System/Libraries
+Summary: KDE Library for working with the Wayland display server
+Name: kwayland
+Version: 5.22.0
+Release: 1
+License: GPL
+Group: System/Libraries
+Url: http://kde.org/
+Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 BuildRequires: pkgconfig(Qt5Core)
+BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5Gui)
 BuildRequires: pkgconfig(Qt5Test)
+BuildRequires: pkgconfig(Qt5Widgets)
+BuildRequires: pkgconfig(egl)
 BuildRequires: pkgconfig(wayland-client) >= 1.8.1
 BuildRequires: pkgconfig(wayland-scanner) >= 1.8.1
 BuildRequires: pkgconfig(wayland-server) >= 1.8.1
@@ -24,7 +26,6 @@ BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
 Requires: qt5-qtwayland
 Requires: qt5-output-driver-eglfs
-Requires: kwayland-integration
 Requires: %{libname} = %{EVRD}
 
 %description
@@ -38,15 +39,15 @@ Group: System/Libraries
 KDE Library for working with the Wayland display server.
 
 %package -n %{devname}
-Summary: Development files for the KDE Plasma 5 Wayland library
+Summary: Development files for the KDE Frameworks Wayland library
 Group: Development/KDE and Qt
 Requires: %{libname} = %{EVRD}
 
 %description -n %{devname}
-Development files for the KDE Plasma 5 Wayland library.
+Development files for the KDE Frameworks Wayland library.
 
 %prep
-%setup -qn %{name}-%{plasmaver}
+%setup -q
 %cmake_kde5
 
 %build
@@ -60,7 +61,7 @@ Development files for the KDE Plasma 5 Wayland library.
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
-%{_libdir}/*.so.%{plasmaver}
+%{_libdir}/*.so.%{version}
 
 %files -n %{devname}
 %{_includedir}/*
