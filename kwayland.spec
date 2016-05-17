@@ -22,7 +22,6 @@ BuildRequires: pkgconfig(wayland-client) >= 1.8.1
 BuildRequires: pkgconfig(wayland-scanner) >= 1.8.1
 BuildRequires: pkgconfig(wayland-server) >= 1.8.1
 BuildRequires: wayland-tools >= 1.8.1
-BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(ECM)
 Requires: qt5-qtwayland
 Requires: qt5-output-driver-eglfs
