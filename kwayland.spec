@@ -6,8 +6,8 @@
 
 Summary: KDE Library for working with the Wayland display server
 Name: kwayland
-Version: 5.22.0
-Release: 2
+Version: 5.23.0
+Release: 1
 License: GPL
 Group: System/Libraries
 Url: http://kde.org/
@@ -57,6 +57,7 @@ Development files for the KDE Frameworks Wayland library.
 
 %files
 %{_sysconfdir}/xdg/org_kde_kwayland.categories
+%{_libdir}/libexec/org-kde-kf5-kwayland-testserver
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
