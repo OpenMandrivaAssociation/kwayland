@@ -30,7 +30,9 @@ BuildRequires: pkgconfig(wayland-scanner) >= 1.8.1
 BuildRequires: pkgconfig(wayland-server) >= 1.8.1
 BuildRequires: wayland-tools >= 1.8.1
 BuildRequires: cmake(ECM)
-BuildRequires: doxygen
+# For building QCH docs
+BuildRequires:  doxygen
+BuildRequires:  qt5-assistant
 Requires: qt5-qtwayland
 Requires: %{_lib}qt5-output-driver-eglfs
 Requires: %{libname} = %{EVRD}
@@ -52,6 +54,14 @@ Requires: %{libname} = %{EVRD}
 
 %description -n %{devname}
 Development files for the KDE Frameworks Wayland library.
+
+%package -n %{name}-devel-docs
+Summary: Developer documentation for %{name} for use with Qt Assistant
+Group: Documentation
+Suggests: %{devname} = %{EVRD}
+
+%description -n %{name}-devel-docs
+Developer documentation for %{name} for use with Qt Assistant
 
 %prep
 %setup -q
@@ -76,3 +86,6 @@ Development files for the KDE Frameworks Wayland library.
 %{_libdir}/*.so
 %{_libdir}/cmake/KF5*
 %{_libdir}/qt5/mkspecs/modules/*.pri
+
+%files -n %{name}-devel-docs
+%{_docdir}/qt5/*.{tags,qch}
