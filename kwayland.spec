@@ -30,6 +30,7 @@ BuildRequires: pkgconfig(wayland-scanner) >= 1.8.1
 BuildRequires: pkgconfig(wayland-server) >= 1.8.1
 BuildRequires: wayland-tools >= 1.8.1
 BuildRequires: cmake(ECM)
+BuildRequires: doxygen
 Requires: qt5-qtwayland
 Requires: %{_lib}qt5-output-driver-eglfs
 Requires: %{libname} = %{EVRD}
