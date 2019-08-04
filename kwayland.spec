@@ -28,6 +28,7 @@ BuildRequires: pkgconfig(egl)
 BuildRequires: pkgconfig(wayland-client) >= 1.8.1
 BuildRequires: pkgconfig(wayland-scanner) >= 1.8.1
 BuildRequires: pkgconfig(wayland-server) >= 1.8.1
+BuildRequires: pkgconfig(wayland-protocols) >= 1.15
 BuildRequires: wayland-tools >= 1.8.1
 BuildRequires: cmake(ECM)
 # For building QCH docs
