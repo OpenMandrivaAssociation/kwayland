@@ -4,17 +4,10 @@
 %define debug_package %{nil}
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
-# Workaround for bug in clang 7.0-336482
-# Compile-time error:
-# Called function is not the same type as the call!
-#  tail call void @wl_event_queue_destroy(%struct.org_kde_kwin_appmenu_manager* nonnull %4) #18, !dbg !61555
-#  LLVM ERROR: Broken function found, compilation aborted!
-%define _disable_lto 1
-
 Summary: KDE Library for working with the Wayland display server
 Name: kwayland
 Version: 5.61.0
-Release: 1
+Release: 2
 License: GPL
 Group: System/Libraries
 Url: http://kde.org/
@@ -65,7 +58,7 @@ Suggests: %{devname} = %{EVRD}
 Developer documentation for %{name} for use with Qt Assistant
 
 %prep
-%setup -q
+%autosetup -p1
 %cmake_kde5
 
 %build
