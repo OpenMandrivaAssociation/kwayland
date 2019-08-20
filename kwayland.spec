@@ -3,6 +3,13 @@
 %define devname %mklibname KF5WaylandClient -d
 %define debug_package %{nil}
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+# (tpg) 2019-08-20
+# Called function is not the same type as the call!
+#  tail call void @wl_event_queue_destroy(%struct.org_kde_kwin_appmenu_manager* nonnull %4) #26, !dbg !81688
+# in function _ZN8KWayland6Client14WaylandPointerI14wl_event_queueXadL_Z22wl_event_queue_destroyEEED2Ev
+# LLVM ERROR: Broken function found, compilation aborted!
+# clang-9: error: linker command failed with exit code 1 (use -v to see invocation)
+%define _disable_lto 1
 
 Summary: KDE Library for working with the Wayland display server
 Name: kwayland
