@@ -13,8 +13,8 @@
 
 Summary: KDE Library for working with the Wayland display server
 Name: kwayland
-Version: 5.68.0
-Release: 2
+Version: 5.69.0
+Release: 1
 License: GPL
 Group: System/Libraries
 Url: http://kde.org/
@@ -31,6 +31,7 @@ BuildRequires: pkgconfig(wayland-server) >= 1.8.1
 BuildRequires: pkgconfig(wayland-protocols) >= 1.15
 BuildRequires: wayland-tools >= 1.8.1
 BuildRequires: cmake(ECM)
+BuildRequires: cmake(Qt5WaylandClient)
 # For building QCH docs
 BuildRequires:  doxygen
 BuildRequires:  qt5-assistant
