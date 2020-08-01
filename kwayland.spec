@@ -13,7 +13,7 @@
 
 Summary: KDE Library for working with the Wayland display server
 Name: kwayland
-Version: 5.72.0
+Version: 5.73.0
 Release: 1
 License: GPL
 Group: System/Libraries
@@ -79,6 +79,7 @@ Developer documentation for %{name} for use with Qt Assistant
 %files
 %{_datadir}/qlogging-categories5/kwayland.categories
 %{_libdir}/libexec/org-kde-kf5-kwayland-testserver
+%{_datadir}/qlogging-categories5/kwayland.renamecategories
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
