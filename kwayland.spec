@@ -32,6 +32,7 @@ BuildRequires: pkgconfig(wayland-protocols) >= 1.15
 BuildRequires: wayland-tools >= 1.8.1
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt5WaylandClient)
+BuildRequires: cmake(PlasmaWaylandProtocols)
 BuildRequires: qt5-qtwayland
 # For building QCH docs
 BuildRequires:  doxygen
