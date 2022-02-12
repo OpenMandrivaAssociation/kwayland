@@ -5,7 +5,7 @@
 
 Summary: KDE Library for working with the Wayland display server
 Name: kwayland
-Version: 5.90.0
+Version: 5.91.0
 Release: 1
 License: GPL
 Group: System/Libraries
@@ -83,6 +83,7 @@ Developer documentation for %{name} for use with Qt Assistant
 %{_libdir}/*.so
 %{_libdir}/cmake/KF5*
 %{_libdir}/qt5/mkspecs/modules/*.pri
+%{_libdir}/pkgconfig/KF5WaylandClient.pc
 
 %files -n %{name}-devel-docs
 %{_docdir}/qt5/*.{tags,qch}
