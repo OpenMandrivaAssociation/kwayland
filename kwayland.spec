@@ -5,7 +5,7 @@
 
 Summary: KDE Library for working with the Wayland display server
 Name: kwayland
-Version: 5.97.0
+Version: 5.98.0
 Release: 1
 License: GPL
 Group: System/Libraries
