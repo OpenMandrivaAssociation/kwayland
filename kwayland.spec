@@ -25,7 +25,9 @@ BuildRequires: wayland-tools >= 1.8.1
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt5WaylandClient)
 BuildRequires: cmake(PlasmaWaylandProtocols)
+BuildRequires: qt5-qtwayland-private-devel
 BuildRequires: qt5-qtwayland
+BuildRequires: pkgconfig(xkbcommon)
 # For building QCH docs
 BuildRequires:  doxygen
 BuildRequires:  qt5-assistant
