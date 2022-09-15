@@ -6,11 +6,13 @@
 Summary: KDE Library for working with the Wayland display server
 Name: kwayland
 Version: 5.98.0
-Release: 1
+Release: 2
 License: GPL
 Group: System/Libraries
 Url: http://kde.org/
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
+# Backport an API used by kwin 5.25.90
+Patch0: https://invent.kde.org/frameworks/kwayland/-/commit/cb13afd8530f651c7d0ce82e47eaa3e1939bd676.patch
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5Gui)

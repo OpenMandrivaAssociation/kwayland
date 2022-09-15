@@ -1,0 +1,117 @@
+From cb13afd8530f651c7d0ce82e47eaa3e1939bd676 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Mon, 5 Sep 2022 14:50:53 +0300
+Subject: [PATCH] Add support for wl_output version 4
+
+---
+ src/client/output.cpp   | 30 +++++++++++++++++++++++++++++-
+ src/client/output.h     | 10 ++++++++++
+ src/client/registry.cpp |  2 +-
+ 3 files changed, 40 insertions(+), 2 deletions(-)
+
+diff --git a/src/client/output.cpp b/src/client/output.cpp
+index 5999af8..d1d4109 100644
+--- a/src/client/output.cpp
++++ b/src/client/output.cpp
+@@ -39,6 +39,8 @@ public:
+     Transform transform = Transform::Normal;
+     Modes modes;
+     Modes::iterator currentMode = modes.end();
++    QString name;
++    QString description;
+ 
+     static Output *get(wl_output *o);
+ 
+@@ -56,6 +58,8 @@ private:
+     static void modeCallback(void *data, wl_output *output, uint32_t flags, int32_t width, int32_t height, int32_t refresh);
+     static void doneCallback(void *data, wl_output *output);
+     static void scaleCallback(void *data, wl_output *output, int32_t scale);
++    static void nameCallback(void *data, struct wl_output *wl_output, const char *name);
++    static void descriptionCallback(void *data, struct wl_output *wl_output, const char *description);
+     void setPhysicalSize(const QSize &size);
+     void setGlobalPosition(const QPoint &pos);
+     void setManufacturer(const QString &manufacturer);
+@@ -120,7 +124,7 @@ Output::~Output()
+     d->output.release();
+ }
+ 
+-wl_output_listener Output::Private::s_outputListener = {geometryCallback, modeCallback, doneCallback, scaleCallback};
++wl_output_listener Output::Private::s_outputListener = {geometryCallback, modeCallback, doneCallback, scaleCallback, nameCallback, descriptionCallback};
+ 
+ void Output::Private::geometryCallback(void *data,
+                                        wl_output *output,
+@@ -234,6 +238,20 @@ void Output::Private::scaleCallback(void *data, wl_output *output, int32_t scale
+     o->setScale(scale);
+ }
+ 
++void Output::Private::nameCallback(void *data, struct wl_output *wl_output, const char *name)
++{
++    auto o = reinterpret_cast<Output::Private *>(data);
++    Q_ASSERT(o->output == wl_output);
++    o->name = QString::fromUtf8(name);
++}
++
++void Output::Private::descriptionCallback(void *data, struct wl_output *wl_output, const char *description)
++{
++    auto o = reinterpret_cast<Output::Private *>(data);
++    Q_ASSERT(o->output == wl_output);
++    o->description = QString::fromUtf8(description);
++}
++
+ void Output::Private::doneCallback(void *data, wl_output *output)
+ {
+     auto o = reinterpret_cast<Output::Private *>(data);
+@@ -365,6 +383,16 @@ QList<Output::Mode> Output::modes() const
+     return d->modes;
+ }
+ 
++QString Output::name() const
++{
++    return d->name;
++}
++
++QString Output::description() const
++{
++    return d->description;
++}
++
+ Output::operator wl_output *()
+ {
+     return d->output;
+diff --git a/src/client/output.h b/src/client/output.h
+index 3bd30dd..246af4b 100644
+--- a/src/client/output.h
++++ b/src/client/output.h
+@@ -174,6 +174,16 @@ public:
+      **/
+     QList<Mode> modes() const;
+ 
++    /**
++     * Returns the name of the output.
++     **/
++    QString name() const;
++
++    /**
++     * Returns the human readable description of the output.
++     **/
++    QString description() const;
++
+     /**
+      * Sets the @p queue to use for bound proxies.
+      **/
+diff --git a/src/client/registry.cpp b/src/client/registry.cpp
+index 2c38c7f..f034a6e 100644
+--- a/src/client/registry.cpp
++++ b/src/client/registry.cpp
+@@ -123,7 +123,7 @@ static const QMap<Registry::Interface, SuppertedInterfaceData> s_interfaces = {
+         &Registry::dataDeviceManagerRemoved
+     }},
+     {Registry::Interface::Output, {
+-        3,
++        4,
+         QByteArrayLiteral("wl_output"),
+         &wl_output_interface,
+         &Registry::outputAnnounced,
+-- 
+GitLab
+
