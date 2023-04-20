@@ -1,11 +1,11 @@
 %define libname %mklibname KF6Wayland
 %define devname %mklibname KF6Wayland -d
-%define git 20230412
+%define git 20230420
 
 Name: kf6-kwayland
 Version: 5.240.0
 Release: %{?git:0.%{git}.}1
-Source0: https://invent.kde.org/frameworks/kwayland/-/archive/master/kwayland-master.tar.bz2
+Source0: https://invent.kde.org/frameworks/kwayland/-/archive/master/kwayland-master.tar.bz2#/kwayland-%{git}.tar.bz2
 Summary: Qt-style Client and Server library wrapper for the Wayland libraries
 URL: https://invent.kde.org/frameworks/kwayland
 License: CC0-1.0 LGPL-2.0+ LGPL-2.1 LGPL-3.0
