@@ -16,6 +16,7 @@ BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(wayland-client)
 BuildRequires: pkgconfig(wayland-server)
 BuildRequires: pkgconfig(wayland-cursor)
+BuildRequires: pkgconfig(wayland-protocols)
 BuildRequires: pkgconfig(wayland-egl)
 BuildRequires: wayland-tools
 BuildRequires: cmake(Qt6WaylandClient)
