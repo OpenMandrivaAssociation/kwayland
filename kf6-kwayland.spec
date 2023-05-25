@@ -1,6 +1,6 @@
 %define libname %mklibname KF6Wayland
 %define devname %mklibname KF6Wayland -d
-%define git 20230513
+%define git 20230525
 
 Name: kf6-kwayland
 Version: 5.240.0
@@ -20,7 +20,7 @@ BuildRequires: pkgconfig(wayland-protocols)
 BuildRequires: pkgconfig(wayland-egl)
 BuildRequires: wayland-tools
 BuildRequires: cmake(Qt6WaylandClient)
-BuildRequires: cmake(XKB)
+BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: cmake(VulkanHeaders)
 BuildRequires: cmake(Qt6GuiTools)
 BuildRequires: cmake(Qt6DBusTools)
