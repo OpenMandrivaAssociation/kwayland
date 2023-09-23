@@ -1,6 +1,6 @@
 %define libname %mklibname KF6Wayland
 %define devname %mklibname KF6Wayland -d
-%define git 20230918
+%define git 20230924
 
 Name: kf6-kwayland
 Version: 5.240.0
