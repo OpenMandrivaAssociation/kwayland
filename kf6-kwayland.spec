@@ -1,6 +1,6 @@
 %define libname %mklibname KF6Wayland
 %define devname %mklibname KF6Wayland -d
-%define git 20230927
+%define git 20231004
 
 Name: kf6-kwayland
 Version: 5.240.0
@@ -79,7 +79,6 @@ Qt-style Client and Server library wrapper for the Wayland libraries
 %{_includedir}/KF6/KWayland
 %{_libdir}/cmake/KF6Wayland
 %{_libdir}/pkgconfig/KF6WaylandClient.pc
-%{_libdir}/qt6/mkspecs/modules/qt_KWaylandClient.pri
 %{_libdir}/qt6/doc/KF6Wayland.*
 
 %files -n %{libname}
