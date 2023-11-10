@@ -1,11 +1,19 @@
+%define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
+
 %define libname %mklibname KF6Wayland
 %define devname %mklibname KF6Wayland -d
-%define git 20231103
+#define git 20231103
 
-Name: kf6-kwayland
-Version: 5.240.0
+%define major %(echo %{version} |cut -d. -f1-3)
+
+Name: plasma6-kwayland
+Version: 5.27.80
 Release: %{?git:0.%{git}.}1
+%if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kwayland/-/archive/master/kwayland-master.tar.bz2#/kwayland-%{git}.tar.bz2
+%else
+Source0: http://download.kde.org/%{stable}/plasma/%{major}/kwayland-%{version}.tar.xz
+%endif
 Summary: Qt-style Client and Server library wrapper for the Wayland libraries
 URL: https://invent.kde.org/frameworks/kwayland
 License: CC0-1.0 LGPL-2.0+ LGPL-2.1 LGPL-3.0
