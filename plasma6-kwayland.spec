@@ -8,7 +8,7 @@
 
 Name: plasma6-kwayland
 Version: 5.27.80
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kwayland/-/archive/master/kwayland-master.tar.bz2#/kwayland-%{git}.tar.bz2
 %else
