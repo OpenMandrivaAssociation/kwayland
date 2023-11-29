@@ -1,14 +1,18 @@
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
-%define libname %mklibname KF6Wayland
-%define devname %mklibname KF6Wayland -d
+# The library got renamed in 5.90.0
+%define oldlibname %mklibname KF6Wayland
+%define olddevname %mklibname KF6Wayland -d
+
+%define libname %mklibname KWaylandClient
+%define devname %mklibname KWaylandClient -d
 #define git 20231103
 
 %define major %(echo %{version} |cut -d. -f1-3)
 
 Name: plasma6-kwayland
-Version: 5.27.80
-Release: %{?git:0.%{git}.}2
+Version: 5.90.0
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kwayland/-/archive/master/kwayland-master.tar.bz2#/kwayland-%{git}.tar.bz2
 %else
@@ -52,6 +56,7 @@ Qt-style Client and Server library wrapper for the Wayland libraries
 Summary: Qt-style Client and Server library wrapper for the Wayland libraries
 Group: System/Libraries
 Requires: %{name} = %{EVRD}
+%rename %{oldlibname}
 
 %description -n %{libname}
 Qt-style Client and Server library wrapper for the Wayland libraries
@@ -60,6 +65,7 @@ Qt-style Client and Server library wrapper for the Wayland libraries
 Summary: Development files for %{name}
 Group: Development/C
 Requires: %{libname} = %{EVRD}
+%rename %{olddevname}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
@@ -84,10 +90,10 @@ Qt-style Client and Server library wrapper for the Wayland libraries
 %{_datadir}/qlogging-categories6/*
 
 %files -n %{devname}
-%{_includedir}/KF6/KWayland
-%{_libdir}/cmake/KF6Wayland
-%{_libdir}/pkgconfig/KF6WaylandClient.pc
-%{_libdir}/qt6/doc/KF6Wayland.*
+%{_includedir}/KWayland
+%{_libdir}/cmake/KWayland
+%{_libdir}/pkgconfig/KWaylandClient.pc
+%{_libdir}/qt6/doc/KWayland.*
 
 %files -n %{libname}
-%{_libdir}/libKF6WaylandClient.so*
+%{_libdir}/libKWaylandClient.so*
