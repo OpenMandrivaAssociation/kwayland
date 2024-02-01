@@ -11,7 +11,7 @@
 %define major %(echo %{version} |cut -d. -f1-3)
 
 Name: plasma6-kwayland
-Version: 5.92.0
+Version: 5.93.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kwayland/-/archive/master/kwayland-master.tar.bz2#/kwayland-%{git}.tar.bz2
