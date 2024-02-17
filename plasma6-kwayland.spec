@@ -7,6 +7,8 @@
 %define libname %mklibname KWaylandClient
 %define devname %mklibname KWaylandClient -d
 %define git 20240217
+%define gitbranch Plasma/6.0
+%define gitbranchd %(echo %{gitbranch} | sed -e 's,/,-,g')
 
 %define major %(echo %{version} |cut -d. -f1-3)
 
@@ -14,7 +16,7 @@ Name: plasma6-kwayland
 Version: 5.94.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
-Source0: https://invent.kde.org/frameworks/kwayland/-/archive/master/kwayland-master.tar.bz2#/kwayland-%{git}.tar.bz2
+Source0: https://invent.kde.org/frameworks/kwayland/-/archive/%{gitbranch}/kwayland-%{gitbranchd}.tar.bz2#/kwayland-%{git}.tar.bz2
 %else
 Source0: http://download.kde.org/%{stable}/plasma/%{major}/kwayland-%{version}.tar.xz
 %endif
@@ -73,7 +75,7 @@ Development files (Headers etc.) for %{name}.
 Qt-style Client and Server library wrapper for the Wayland libraries
 
 %prep
-%autosetup -p1 -n kwayland-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n kwayland-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DBUILD_QCH:BOOL=ON \
 	-DBUILD_WITH_QT6:BOOL=ON \
