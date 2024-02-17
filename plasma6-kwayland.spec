@@ -6,12 +6,12 @@
 
 %define libname %mklibname KWaylandClient
 %define devname %mklibname KWaylandClient -d
-#define git 20231103
+%define git 20240217
 
 %define major %(echo %{version} |cut -d. -f1-3)
 
 Name: plasma6-kwayland
-Version: 5.93.0
+Version: 5.94.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kwayland/-/archive/master/kwayland-master.tar.bz2#/kwayland-%{git}.tar.bz2
