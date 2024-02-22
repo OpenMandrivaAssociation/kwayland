@@ -6,14 +6,14 @@
 
 %define libname %mklibname KWaylandClient
 %define devname %mklibname KWaylandClient -d
-%define git 20240217
+%define git 20240222
 %define gitbranch Plasma/6.0
 %define gitbranchd %(echo %{gitbranch} | sed -e 's,/,-,g')
 
 %define major %(echo %{version} |cut -d. -f1-3)
 
 Name: plasma6-kwayland
-Version: 5.94.0
+Version: 6.0.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kwayland/-/archive/%{gitbranch}/kwayland-%{gitbranchd}.tar.bz2#/kwayland-%{git}.tar.bz2
