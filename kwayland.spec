@@ -9,7 +9,7 @@ Version: 5.116.0
 Release: 1
 License: GPL
 Group: System/Libraries
-Url: http://kde.org/
+Url: https://kde.org/
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Concurrent)
