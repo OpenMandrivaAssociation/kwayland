@@ -9,7 +9,7 @@
 %define major %(echo %{version} |cut -d. -f1-3)
 
 Name: kwayland
-Version: 6.3.5
+Version: 6.4.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kwayland/-/archive/%{gitbranch}/kwayland-%{gitbranchd}.tar.bz2#/kwayland-%{git}.tar.bz2
@@ -72,6 +72,13 @@ Development files (Headers etc.) for %{name}.
 
 Qt-style Client and Server library wrapper for the Wayland libraries
 
+%package doc
+Summary: Developer documentation for %{name} in Qt Assistant format
+Group: Development/C
+
+%description doc
+Developer documentation for %{name} in Qt Assistant format
+
 %files
 %{_datadir}/qlogging-categories6/*
 
@@ -79,7 +86,9 @@ Qt-style Client and Server library wrapper for the Wayland libraries
 %{_includedir}/KWayland
 %{_libdir}/cmake/KWayland
 %{_libdir}/pkgconfig/KWaylandClient.pc
-%{_libdir}/qt6/doc/KWayland.*
 
 %files -n %{libname}
 %{_libdir}/libKWaylandClient.so*
+
+%files doc
+%{_qtdir}/doc/KWayland.*
