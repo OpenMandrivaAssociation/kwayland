@@ -9,8 +9,8 @@
 %define major %(echo %{version} |cut -d. -f1-3)
 
 Name: kwayland
-Version: 6.4.4
-Release: %{?git:0.%{git}.}2
+Version: 6.4.5
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kwayland/-/archive/%{gitbranch}/kwayland-%{gitbranchd}.tar.bz2#/kwayland-%{git}.tar.bz2
 %else
